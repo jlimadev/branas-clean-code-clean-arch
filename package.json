@@ -1,0 +1,19 @@
+{
+  "name": "clean-code-clean-arch",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "build": "tsc",
+    "test": "jest",
+    "test:build": "yarn build && yarn test dist/"
+  },
+  "dependencies": {
+    "typescript": "^4.5.2"
+  },
+  "devDependencies": {
+    "@types/jest": "^27.0.3",
+    "@types/node": "^16.11.10",
+    "jest": "^27.3.1"
+  }
+}
