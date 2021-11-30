@@ -10,7 +10,7 @@ export class CPF {
   private getDigitsFromCPF = (cpf: string): string => cpf.replace(/\D/g, '');
 
   private allDigitsAreEquals = (cpf: string): boolean => {
-    const firstDigit = cpf[0];
+    const [firstDigit] = cpf;
     return [...cpf].every((digit) => digit === firstDigit);
   };
 
