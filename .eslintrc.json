@@ -13,12 +13,10 @@
     "ecmaVersion": 13,
     "sourceType": "module"
   },
-  "plugins": [
-    "prettier",
-    "@typescript-eslint"
-  ],
+  "plugins": ["prettier", "@typescript-eslint"],
   "rules": {
     "radix": "off",
+    "lines-between-class-members": "off",
     "no-useless-constructor": "off",
     "import/prefer-default-export": "off",
     "class-methods-use-this": "off",
