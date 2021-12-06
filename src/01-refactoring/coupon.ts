@@ -10,6 +10,7 @@ export class Coupon {
   }
 
   isExpired(today = new Date()) {
-    return this.expirationDate ? this.expirationDate < today : false;
+    if (!this.expirationDate) return false;
+    return this.expirationDate < today;
   }
 }
