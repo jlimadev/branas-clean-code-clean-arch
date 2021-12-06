@@ -32,4 +32,12 @@ describe('order', () => {
     const expectedTotal = 4408;
     expect(total).toBe(expectedTotal);
   });
+  it('should order with expired discount coupon but not apply discount', () => {
+    const cpf = '935.411.347-80';
+    const order = new Order(cpf);
+    order.addItem(new Item(1, 'Technology', 'Notebook', 5000), 1);
+    order.addCoupon(new Coupon('20OFF', 20, new Date(2020, 1, 1)));
+    const total = order.getTotal();
+    expect(total).toBe(5000);
+  });
 });

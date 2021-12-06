@@ -16,6 +16,7 @@ export class Order {
   }
 
   addCoupon(coupon: Coupon) {
+    if (coupon.isExpired()) return;
     this.coupon = coupon;
   }
 
@@ -25,7 +26,9 @@ export class Order {
 
   getTotal() {
     const total = this.orderItems.reduce((acc, item) => acc + item.getTotal(), 0);
-    if (this.coupon) return total - this.coupon.getDiscount(total);
+    if (this.coupon) {
+      return total - this.coupon.getDiscount(total);
+    }
     return total;
   }
 }
