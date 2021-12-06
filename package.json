@@ -5,7 +5,9 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "test": "jest",
+    "test": "jest --runInBand",
+    "test:cov": "yarn test --coverage",
+    "test:watch": "yarn test --watch",
     "test:build": "yarn build && yarn test dist/"
   },
   "dependencies": {
