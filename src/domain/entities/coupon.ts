@@ -5,12 +5,17 @@ export class Coupon {
     private readonly expirationDate?: Date,
   ) {}
 
-  getDiscount(amount: number): number {
-    return (amount * this.percentage) / 100;
+  isValid(today: Date = new Date()) {
+    if (!this.expirationDate) return true;
+    return this.expirationDate.getTime() >= today.getTime();
   }
 
-  isExpired(today = new Date()) {
-    if (!this.expirationDate) return false;
-    return this.expirationDate < today;
+  isExpired(today: Date = new Date()) {
+    return !this.isValid(today);
+  }
+
+  calculateDiscount(amount: number, today: Date = new Date()): number {
+    if (this.isExpired(today)) return 0;
+    return (amount * this.percentage) / 100;
   }
 }
