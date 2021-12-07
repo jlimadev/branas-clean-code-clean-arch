@@ -1,5 +1,3 @@
-const MINIMUM_FREIGHT_PRICE = 10;
-
 export class Item {
   constructor(
     readonly id: number,
@@ -18,10 +16,5 @@ export class Item {
 
   getDensity(): number {
     return this.weight / this.getVolume();
-  }
-
-  getFreight(distance: number): number {
-    const freight = distance * this.getVolume() * (this.getDensity() / 100);
-    return freight < MINIMUM_FREIGHT_PRICE ? MINIMUM_FREIGHT_PRICE : freight;
   }
 }
