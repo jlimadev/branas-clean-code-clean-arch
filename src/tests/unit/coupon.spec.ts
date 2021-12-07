@@ -1,4 +1,4 @@
-import { Coupon } from './coupon';
+import { Coupon } from '../../domain/entities/coupon';
 
 describe('coupon', () => {
   describe('getDiscount', () => {

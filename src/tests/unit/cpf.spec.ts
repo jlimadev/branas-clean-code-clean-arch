@@ -1,4 +1,4 @@
-import { CPF } from './cpf';
+import { CPF } from '../../domain/entities/cpf';
 
 describe('cpf validator', () => {
   it('should return true when cpf is valid', () => {
