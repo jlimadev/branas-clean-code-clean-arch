@@ -1,4 +1,4 @@
-import { Coupon } from '../../domain/entities/coupon';
+import { Coupon } from '../../src/domain/entities/coupon';
 
 describe('coupon', () => {
   it('should create a valid coupon', () => {

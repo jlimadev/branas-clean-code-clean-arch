@@ -1,4 +1,4 @@
-import { DefaultFreightCalculator } from '../../domain/entities/default-freight-calculator';
+import { DefaultFreightCalculator } from '../../src/domain/entities/default-freight-calculator';
 import { defaultItem, makeItem } from '../factory/entities/item-factory';
 
 const defaultFreightCalculator = new DefaultFreightCalculator();

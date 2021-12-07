@@ -1,6 +1,6 @@
-import { Order } from '../../domain/entities/order';
-import { Item } from '../../domain/entities/item';
-import { Coupon } from '../../domain/entities/coupon';
+import { Order } from '../../src/domain/entities/order';
+import { Item } from '../../src/domain/entities/item';
+import { Coupon } from '../../src/domain/entities/coupon';
 
 describe('order', () => {
   it('should not be able to order with a invalid cpf', () => {

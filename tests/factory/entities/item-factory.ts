@@ -1,4 +1,4 @@
-import { Item } from '../../../domain/entities/item';
+import { Item } from '../../../src/domain/entities/item';
 
 export const defaultItem = {
   id: 1,
