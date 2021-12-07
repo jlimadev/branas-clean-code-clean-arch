@@ -1,13 +1,12 @@
 export class CPF {
   CPF_COEFFICIENT = 11;
-
   CPF_VALID_LENGTH = 11;
 
   constructor(readonly value: string) {
     if (!this.isValid(value)) throw new Error(`CPF ${value} is not valid`);
   }
 
-  private getDigitsFromCPF = (cpf: string): string => cpf.replace(/\D/g, '');
+  private clean = (cpf: string): string => cpf.replace(/\D/g, '');
 
   private allDigitsAreEquals = (cpf: string): boolean => {
     const [firstDigit] = cpf;
@@ -27,7 +26,7 @@ export class CPF {
 
   isValid = (cpf: string): boolean => {
     if (!cpf) return false;
-    const cpfDigits = this.getDigitsFromCPF(cpf);
+    const cpfDigits = this.clean(cpf);
     if (cpfDigits.length !== this.CPF_VALID_LENGTH) return false;
     if (this.allDigitsAreEquals(cpfDigits)) return false;
     const cpfWithNoVerifierDigits = cpfDigits.slice(0, -2);
