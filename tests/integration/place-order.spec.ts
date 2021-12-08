@@ -61,4 +61,15 @@ describe('place order', () => {
     expect(itemRepositorySpy).toHaveBeenNthCalledWith(2, 2);
     expect(itemRepositorySpy).toHaveBeenNthCalledWith(3, 3);
   });
+  it('should call couponRepository with correct data', async () => {
+    const { sut, couponRepository } = makeSut();
+    const itemRepositorySpy = jest.spyOn(couponRepository, 'findByCode');
+    const input = {
+      ...makeDefaultInput(),
+      coupon: '20OFF',
+    };
+    await sut.invoke(input);
+    expect(itemRepositorySpy).toHaveBeenCalledTimes(1);
+    expect(itemRepositorySpy).toHaveBeenCalledWith('20OFF');
+  });
 });
