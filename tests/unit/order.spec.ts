@@ -43,10 +43,10 @@ describe('order', () => {
   it('should order 3 items with default freight calculator strategy', () => {
     const cpf = '935.411.347-80';
     const order = new Order(cpf);
-    order.addItem(new Item(1, 'Technology', 'Notebook', 5000, 100, 30, 10, 3), 1);
-    order.addItem(new Item(2, 'Technology', 'Mouse', 500, 100, 30, 10, 3), 1);
-    order.addItem(new Item(3, 'Food', 'Cookies', 2, 10, 10, 10, 0.9), 5);
+    order.addItem(new Item(1, 'Technology', 'Notebook', 5000, 100, 50, 50, 20), 1);
+    order.addItem(new Item(2, 'Technology', 'Mouse', 1000, 100, 30, 10, 3), 1);
+    order.addItem(new Item(3, 'Food', 'Cookies', 30, 10, 10, 10, 0.9), 3);
     const freight = order.getFreight();
-    expect(freight).toBe(50);
+    expect(freight).toBe(260);
   });
 });

@@ -28,7 +28,7 @@ export class Order {
 
   addItem(item: Item, quantity: number) {
     this.orderItems.push(new OrderItem(item.id, item.price, quantity));
-    this.freight = this.freightCalculator.calculate(item) * quantity;
+    this.freight += this.freightCalculator.calculate(item) * quantity;
   }
 
   getFreight() {
