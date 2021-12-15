@@ -72,4 +72,17 @@ describe('place order', () => {
     expect(itemRepositorySpy).toHaveBeenCalledTimes(1);
     expect(itemRepositorySpy).toHaveBeenCalledWith('20OFF');
   });
+  it('should place an order with code/id', async () => {
+    const { sut } = makeSut();
+    const input = {
+      ...makeDefaultInput(),
+      orderItems: [
+        { idItem: 4, quantity: 1 },
+        { idItem: 5, quantity: 1 },
+        { idItem: 6, quantity: 3 },
+      ],
+    };
+    const output = await sut.invoke(input);
+    expect(output.id).toBe('202100000001');
+  });
 });
