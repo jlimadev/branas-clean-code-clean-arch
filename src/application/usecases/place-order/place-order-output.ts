@@ -1,3 +1,3 @@
 export default class PlaceOrderOutput {
-  constructor(readonly total: number) {}
+  constructor(readonly id: string, readonly total: number) {}
 }
