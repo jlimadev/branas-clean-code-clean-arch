@@ -49,4 +49,13 @@ describe('order', () => {
     const freight = order.getFreight();
     expect(freight).toBe(260);
   });
+  it('should order with code', () => {
+    const cpf = '935.411.347-80';
+    const order = new Order(cpf);
+    order.addItem(new Item(1, 'Technology', 'Notebook', 5000, 100, 50, 50, 20), 1);
+    order.addItem(new Item(2, 'Technology', 'Mouse', 1000, 100, 30, 10, 3), 1);
+    order.addItem(new Item(3, 'Food', 'Cookies', 30, 10, 10, 10, 0.9), 3);
+    const code = order.getCode();
+    expect(code).toBe('202100000001');
+  });
 });
