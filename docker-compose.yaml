@@ -5,13 +5,30 @@ services:
     image: postgres
     container_name: ccca-container-db
     restart: unless-stopped
+    networks:
+      - postgres
     environment:
       POSTGRES_USER: ${POSTGRES_USER:-postgres}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
       PGDATA: /data/postgres
     volumes:
-      - postgres:/data/postgres
+      - ./database/create.sql:/docker-entrypoint-initdb.d/create.sql
     ports:
-      - "5432:5432"
+      - '5432:5432'
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: ccca-container-db-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: 'postgres@email.com'
+      PGADMIN_DEFAULT_PASSWORD: 'postgres'
+    networks:
+      - postgres
+    ports:
+      - '15432:80'
+    depends_on:
+      - db
 volumes:
   postgres:
+networks:
+  postgres:
+    driver: bridge
