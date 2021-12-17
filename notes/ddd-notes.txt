@@ -1,0 +1,22 @@
+Entidade para Clean Arch: Unidades com regras de negócios independentes
+
+Entidade para DDD: Abstraem regras de negocio independentes, elas tem identidade e mudam de estado ao longo do tempo, ou seja, mudam de estado ao longo do tempo
+
+subdominio: lado do problema
+bounded context: lado da solução
+
+value-object: geralmente sao identificadas pelo seu proprio valor, sendo imutaveis, ou seja, sua mudança implica na sua substituição. (CPF, CNPJ, etc)
+
+domain-service: realiza tarefas especificas no Dominio, não tendo estado. é indicado quando a operação que vc quer não pertence a entidade e nem a um value object em específico. (exemplo calculo de frete)
+
+Aggregates: ele deve preservar a invariância em toda sua extensão. Se qualquer parte do Agregado falhar, ele fica invalido. Por exemplo: Ao adicionar o items no pedido, se um falhar, ele fica inválido.
+
+Todo agregado tem uma raíz, que é uma entity, por meio da qua as operações sobre agregado sao realizadas
+
+application-service: ele orquesrta os objetos de dominio, ele parece com o usecase. Ele é uma fachada. São clientes diretos do modelo de dominio, faz a orquestração dos agregados, entities, value objects, domain services, repositories e infra services.
+
+infrastructure-service:
+
+repository: responsável por persistência dos agregados, desacoplando o dominio dos detalhes de infra.
+
+modulos: fornecem uma separação fisica para o código
