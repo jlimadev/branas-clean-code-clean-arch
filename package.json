@@ -5,17 +5,19 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "test": "jest --runInBand",
+    "test": "jest --runInBand --forceExit",
     "test:cov": "yarn test --coverage",
     "test:watch": "yarn test --watch",
     "test:build": "yarn build && yarn test dist/"
   },
   "dependencies": {
+    "pg-promise": "^10.11.1",
     "typescript": "^4.5.2"
   },
   "devDependencies": {
     "@types/jest": "^27.0.3",
     "@types/node": "^16.11.10",
+    "@types/pg-promise": "^5.4.3",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",
     "eslint": "^8.3.0",
