@@ -1,12 +1,16 @@
 import { PlaceOrder } from '../../src/application/usecases/place-order/place-order';
-import ItemRepositoryInMemory from '../../src/infra/repository/memory/item-repository-in-memory';
-import CouponRepositoryInMemory from '../../src/infra/repository/memory/coupon-repository-in-memory';
-import OrderRepositoryInMemory from '../../src/infra/repository/memory/order-repository-in-memory';
+import ItemRepositoryDatabase from '../../src/infra/repository/database/item-repository-database';
+import PgPromiseConnectionAdapter from '../../src/infra/database/pg-promise-connection-adapter';
+import CouponRepositoryDatabase from '../../src/infra/repository/database/coupon-repository-database';
+import OrderRepositoryDatabase from '../../src/infra/repository/database/order-repository-database';
+
+let orderRepository: OrderRepositoryDatabase;
 
 const makeSut = () => {
-  const itemRepository = new ItemRepositoryInMemory();
-  const couponRepository = new CouponRepositoryInMemory();
-  const orderRepository = new OrderRepositoryInMemory();
+  const connection = PgPromiseConnectionAdapter.getInstance();
+  const itemRepository = new ItemRepositoryDatabase(connection);
+  const couponRepository = new CouponRepositoryDatabase(connection);
+  orderRepository = new OrderRepositoryDatabase(connection);
   const placeOrder = new PlaceOrder(itemRepository, orderRepository, couponRepository);
   return {
     sut: placeOrder,
@@ -26,6 +30,10 @@ const makeDefaultInput = () => ({
   date: new Date(),
 });
 
+afterEach(async () => {
+  await orderRepository.clear();
+});
+
 describe('place order', () => {
   it('should place an order with discount', async () => {
     const { sut } = makeSut();
@@ -34,7 +42,7 @@ describe('place order', () => {
       coupon: '20OFF',
     };
     const output = await sut.invoke(input);
-    expect(output.total).toBe(88);
+    expect(output.total).toBe(138);
   });
   it('should place an order with freight', async () => {
     const { sut } = makeSut();
