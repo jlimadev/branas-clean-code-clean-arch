@@ -14,7 +14,7 @@ export class PlaceOrder {
   ) {}
 
   async invoke(input: PlaceOrderInput): Promise<PlaceOrderOutput> {
-    const sequence = await this.orderRepository.count();
+    const sequence = (await this.orderRepository.count()) + 1;
     const order = new Order(input.cpf, input.date, new DefaultFreightCalculator(), sequence);
     for (const orderItem of input.orderItems) {
       const item = await this.itemRepository.findById(orderItem.idItem);
