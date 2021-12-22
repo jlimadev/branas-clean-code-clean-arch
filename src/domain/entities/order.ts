@@ -7,10 +7,10 @@ import { FreightCalculator } from '../interfaces/freight-calculator';
 import OrderId from './order-id';
 
 export class Order {
+  coupon: Coupon | undefined;
   private readonly cpf: CPF;
-  private coupon: Coupon | undefined;
-  private orderItems: OrderItem[];
   private freight: number;
+  private readonly orderItems: OrderItem[];
   private readonly orderId: string;
 
   constructor(
@@ -41,6 +41,14 @@ export class Order {
 
   getFreight(): number {
     return this.freight;
+  }
+
+  getCpf(): string {
+    return this.cpf.value;
+  }
+
+  getOrderItems() {
+    return this.orderItems;
   }
 
   getTotal() {
