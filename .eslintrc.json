@@ -24,6 +24,7 @@
     "class-methods-use-this": "off",
     "no-plusplus": "off",
     "@typescript-eslint/no-explicit-any": "off",
+    "no-use-before-define": "off",
     "prettier/prettier": [
       "error",
       {
