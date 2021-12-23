@@ -18,4 +18,12 @@ describe('validate-coupon', () => {
     const couponCode = 'ANY-INVALID-COUPON';
     await expect(() => validateCoupon.invoke(couponCode)).rejects.toThrow();
   });
+  it('should return false if coupon is expired', async () => {
+    const connection = PgPromiseConnectionAdapter.getInstance();
+    const couponRepository = new CouponRepositoryDatabase(connection);
+    const validateCoupon = new ValidateCoupon(couponRepository);
+    const couponCode = '20OFF_EXPIRED';
+    const isValid = await validateCoupon.invoke(couponCode);
+    expect(isValid).toBe(false);
+  });
 });
