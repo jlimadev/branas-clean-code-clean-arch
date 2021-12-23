@@ -25,6 +25,7 @@
     "no-plusplus": "off",
     "@typescript-eslint/no-explicit-any": "off",
     "no-use-before-define": "off",
+    "no-return-await": "off",
     "prettier/prettier": [
       "error",
       {

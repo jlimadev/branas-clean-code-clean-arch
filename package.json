@@ -7,8 +7,7 @@
     "build": "tsc",
     "test": "jest --runInBand --forceExit",
     "test:cov": "yarn test --coverage",
-    "test:watch": "yarn test --watch",
-    "test:build": "yarn build && yarn test dist/"
+    "test:watch": "yarn test --watch"
   },
   "dependencies": {
     "pg-promise": "^10.11.1",
