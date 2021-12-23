@@ -11,4 +11,11 @@ describe('validate-coupon', () => {
     const isValid = await validateCoupon.invoke(couponCode);
     expect(isValid).toBe(true);
   });
+  it('should should throw if the coupon does not exists', async () => {
+    const connection = PgPromiseConnectionAdapter.getInstance();
+    const couponRepository = new CouponRepositoryDatabase(connection);
+    const validateCoupon = new ValidateCoupon(couponRepository);
+    const couponCode = 'ANY-INVALID-COUPON';
+    await expect(() => validateCoupon.invoke(couponCode)).rejects.toThrow();
+  });
 });
