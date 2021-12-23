@@ -16,7 +16,7 @@ export default class PgPromiseConnectionAdapter implements Connection {
     return PgPromiseConnectionAdapter.instance;
   }
 
-  query(statement: string, params: any[]): Promise<any> {
-    return this.pgp.query(statement, params);
+  async query(statement: string, params: any[]): Promise<any> {
+    return await this.pgp.query(statement, params);
   }
 }
