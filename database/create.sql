@@ -34,9 +34,9 @@ create table ccca.coupon
 );
 
 insert into ccca.coupon (code, percentage, expire_date)
-values ('VALE20', 20, '2023-10-10T10:00:00');
+values ('20OFF', 20, '2023-10-10T10:00:00');
 insert into ccca.coupon (code, percentage, expire_date)
-values ('VALE20_EXPIRED', 20, '2020-10-10T10:00:00');
+values ('20OFF_EXPIRED', 20, '2020-10-10T10:00:00');
 
 create table ccca.order
 (
