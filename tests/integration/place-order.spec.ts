@@ -27,7 +27,7 @@ const makeDefaultInput = () => ({
     { idItem: 2, quantity: 1 },
     { idItem: 3, quantity: 3 },
   ],
-  date: new Date(),
+  date: new Date('2021-01-01T03:24:00'),
 });
 
 afterEach(async () => {

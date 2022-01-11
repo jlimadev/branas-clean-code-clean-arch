@@ -51,7 +51,7 @@ describe('order', () => {
   });
   it('should order with code', () => {
     const cpf = '935.411.347-80';
-    const order = new Order(cpf);
+    const order = new Order(cpf, new Date('2021-01-01T12:00:00'));
     order.addItem(new Item(1, 'Technology', 'Notebook', 5000, 100, 50, 50, 20), 1);
     order.addItem(new Item(2, 'Technology', 'Mouse', 1000, 100, 30, 10, 3), 1);
     order.addItem(new Item(3, 'Food', 'Cookies', 30, 10, 10, 10, 0.9), 3);
